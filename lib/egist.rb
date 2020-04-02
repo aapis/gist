@@ -12,7 +12,7 @@ end
 module Gist
   extend self
 
-  VERSION = '5.1.2'
+  VERSION = '5.1.4'
 
   # A list of clipboard commands with copy and paste support.
   CLIPBOARD_COMMANDS = {
@@ -223,7 +223,8 @@ module Gist
     request['Authorization'] = "token #{access_token}" if access_token.to_s != ''
     response = http(api_url, request)
 
-    response.code == 200
+    body = JSON.parse(response.body)
+    body['id'] == id
   end
 
   def read_gist(id, file_name=nil)
