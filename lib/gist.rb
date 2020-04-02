@@ -215,6 +215,22 @@ module Gist
 
   end
 
+  def gist_exists?(id)
+    url = "#{base_path}/gists/#{id}"
+
+    access_token = auth_token()
+
+    request = Net::HTTP::Get.new(url)
+    request['Authorization'] = "token #{access_token}" if access_token.to_s != ''
+    response = http(api_url, request)
+
+    if response.code == '200'
+      JSON.parse(response.body)
+    else
+      raise Error, "Gist with id of #{id} does not exist."
+    end
+  end
+
   def read_gist(id, file_name=nil)
     url = "#{base_path}/gists/#{id}"
 

@@ -1,13 +1,13 @@
 # encoding: utf-8
 require './lib/gist'
 Gem::Specification.new do |s|
-  s.name          = 'gist'
+  s.name          = 'aapis-gist'
   s.version       = Gist::VERSION
   s.summary       = 'Just allows you to upload gists'
   s.description   = 'Provides a single function (Gist.gist) that uploads a gist.'
   s.homepage      = 'https://github.com/defunkt/gist'
-  s.email         = ['conrad.irwin@gmail.com', 'rkingist@sharpsaw.org']
-  s.authors       = ['Conrad Irwin', '☈king']
+  s.email         = ['conrad.irwin@gmail.com', 'rkingist@sharpsaw.org', 'rpriebe@me.com']
+  s.authors       = ['Conrad Irwin', '☈king', 'aapis']
   s.license       = 'MIT'
   s.files         = `git ls-files`.split("\n")
   s.require_paths = ["lib"]
