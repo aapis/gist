@@ -12,7 +12,7 @@ end
 module Gist
   extend self
 
-  VERSION = '5.1.4'
+  VERSION = '5.1.5'
 
   # A list of clipboard commands with copy and paste support.
   CLIPBOARD_COMMANDS = {
@@ -225,6 +225,22 @@ module Gist
 
     body = JSON.parse(response.body)
     body['id'] == id
+  end
+
+  def download(id)
+    url = "#{base_path}/gists/#{id}"
+    access_token = auth_token()
+    request = Net::HTTP::Get.new(url)
+
+    request['Authorization'] = "token #{access_token}" if access_token.to_s != ''
+    response = http(api_url, request)
+
+    if response.code == '200'
+      body = JSON.parse(response.body)
+      body['files']
+    else
+      raise Error, "Gist with id of #{id} does not exist."
+    end
   end
 
   def read_gist(id, file_name=nil)
