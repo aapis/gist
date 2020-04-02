@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.files         = `git ls-files`.split("\n")
   s.require_paths = ["lib"]
 
-  s.executables << 'gist'
+  s.executables << 'agist'
 
   s.add_development_dependency 'rake'
   s.add_development_dependency 'ronn'
